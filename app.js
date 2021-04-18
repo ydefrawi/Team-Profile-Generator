@@ -15,16 +15,24 @@ const employees = [];
 
 
 //Inquirer Questions 
-const employeeType = [
-    {
-        type: 'confirm',
-        message: 'Add a new employee?',
-        name: 'new-employee',
-    },
+
+const newEmpQuestions = [
+    [
+        {
+            type: 'list',
+            message: 'Add a new employee?',
+            name: 'newMember',
+            choices: ['Yes', 'No',]
+        },
+    ]
+];
+
+const roleQuestion = [
+
     {
         type: 'list',
-        message: 'Employee type?',
-        name: 'employeeType',
+        message: 'Employee role?',
+        name: 'role',
         choices: ['Engineer', 'Manager', 'Intern']
     },
 
@@ -33,12 +41,22 @@ const employeeType = [
 const internQuestions = [
     {
         type: 'input',
-        message: 'Name:',
+        message: 'Name?:',
         name: 'name',
     },
     {
         type: 'input',
-        message: 'School:',
+        message: 'ID?:',
+        name: 'id',
+    },
+    {
+        type: 'input',
+        message: 'Email?:',
+        name: 'email',
+    },
+    {
+        type: 'input',
+        message: 'School?:',
         name: 'school',
     },
 ]
@@ -52,43 +70,81 @@ const engineerQuestions = [
     },
     {
         type: 'input',
-        message: 'School:',
-        name: 'school',
+        message: 'ID?:',
+        name: 'id',
+    },
+    {
+        type: 'input',
+        message: 'Email?',
+        name: 'email',
+    },
+    {
+        type: 'input',
+        message: 'GitHub Username?:',
+        name: 'github',
     },
 ]
 
 const managerQuestions = [
     {
         type: 'input',
-        message: 'Name:',
-        name: 'name',
+        message: 'Name?',
+        name: 'github',
     },
     {
         type: 'input',
-        message: 'School:',
-        name: 'school',
+        message: 'ID?:',
+        name: 'id',
+    },
+    {
+        type: 'input',
+        message: 'Email?',
+        name: 'email',
+    },
+    {
+        type: 'input',
+        message: 'Office Number?',
+        name: 'office',
     },
 ]
 
 
+
+
+
+const addNewEmp = () => {
+    inquirer
+        .prompt(newEmpQuestions)
+        .then(({ newMember }) => {
+            switch (newMember) {
+                case 'Yes':
+                    init()
+                    break;
+                case 'No':
+                    break;
+            }
+        })
+}
 
 const addManager = () => {
     console.log("Manager selected!")
     inquirer
         .prompt(managerQuestions)
         .then(({ name, id, email, office }) => {
-            console.log(`Name: ${name} \nID: ${id}\n Email: ${email} \n office: ${office}`);
+             // TODO will write to templates here 
+            console.log(`Name: ${name} \nID: ${id}\nEmail: ${email} \nOffice Number: ${office}`);
             const manager = new Manager()
             employees.push(manager)
         })
 }
 
 const addEngineer = () => {
-    console.log("Intern selected!")
+    console.log("Engineer selected!")
     inquirer
         .prompt(engineerQuestions)
         .then(({name, id, email, github }) => {
-            console.log(`Name: ${name} \nID: ${id}\n Email: ${email} \n GitHub: ${github}`);
+             // TODO will write to templates here 
+            console.log(`Name: ${name} \nID: ${id}\nEmail: ${email} \nGitHub: ${github}`);
             const engineer = new Engineer()
             employees.push(engineer)
         })
@@ -98,23 +154,23 @@ const addIntern = () => {
     console.log("Intern selected!")
     inquirer
         .prompt(internQuestions)
-        .then(({ name, school }) => {
+        .then(({ name, id, email, school }) => {
+        // TODO will write to templates here 
             console.log(`Name: ${name} \nSchool: ${school}`);
-            const intern = new Intern()
+            const intern = new Intern(name, id, email, school)
             employees.push(intern)
+            console.log(intern);
         })
 }
 
 
 
 
-
-
 function init() {
     inquirer
-        .prompt(employeeType)
-        .then(({ employeeType }) => {
-            switch (employeeType) {
+        .prompt(roleQuestion)
+        .then(({ role }) => {
+            switch (role) {
                 case 'Intern':
                     addIntern()
                     break;
@@ -125,11 +181,39 @@ function init() {
                     addManager()
                     break;
             }
-        });
+        })
+        // .then(() => {
+        //     addNew();
+        // })
+
 }
 
 
-init();
+// function init() {
+//     inquirer
+//         .prompt(roleQuestion)
+//         .then(({ role }) => {
+//             switch (role) {
+//                 case 'Intern':
+//                     addIntern()
+//                     break;
+//                 case 'Engineer':
+//                     addEngineer()
+//                     break;
+//                 case 'Manager':
+//                     addManager()
+//                     break;
+//             }
+//         })
+//         // .then(() => {
+//         //     addNew();
+//         // })
+
+// }
+
+
+addNew();
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
