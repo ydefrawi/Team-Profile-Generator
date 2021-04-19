@@ -109,8 +109,8 @@ const managerQuestions = [
     }
 ]
 
-
-const addNewEmp = () => {
+//Asks user if they wish to add an employee
+const addNewEmployee = () => {
     inquirer
         .prompt(wantNewEmp)
         .then(({ newMember }) => {
@@ -119,12 +119,14 @@ const addNewEmp = () => {
                     employeeRole()
                     break;
                 case 'No':
-                    // console.log(employees)
+                    fs.writeFile('test.html', render(employees), (err) => {
+                        err ? console.error(err) : console.log('Success!')})
                     break;
             }
         })
 }
 
+//Asks user what type of employee they wish to add (Manager, Engineer, Intern)
 const employeeRole = () => {
     inquirer
         .prompt(roleQuestion)
@@ -144,6 +146,8 @@ const employeeRole = () => {
 }
 
 
+// The 3 functions below (addManager, etc) prompt role-specific questions ,
+//write to the template, and call the addNewEmp function again. 
 const addManager = () => {
     console.log(`\nManager selected!`)
     inquirer
@@ -153,8 +157,9 @@ const addManager = () => {
             console.log(`\nManager Added!\nName: ${name} \nID: ${id}\nEmail: ${email} \nOffice Number: ${office}\n`);
             const manager = new Manager(name, id, email, office)
             employees.push(manager)
-            addNewEmp();
+            addNewEmployee();
         })
+        
 }
 
 const addEngineer = () => {
@@ -166,7 +171,7 @@ const addEngineer = () => {
             console.log(`\nEngineer Added!\nName: ${name} \nID: ${id}\nEmail: ${email} \nGitHub: ${github}\n`);
             const engineer = new Engineer(name, id, email, github)
             employees.push(engineer)
-            addNewEmp();
+            addNewEmployee();
         })
 }
 
@@ -179,8 +184,7 @@ const addIntern = () => {
             console.log(`\nIntern Added!\nName: ${name} \nSchool: ${school}\n`);
             const intern = new Intern(name, id, email, school)
             employees.push(intern)
-            console.log(intern);
-            addNewEmp(name, id);
+            addNewEmployee();
 
             
         })
@@ -189,11 +193,11 @@ const addIntern = () => {
 
 
 
-// const init = () => {
-    addNewEmp();
-// }
+const init = () => {
+    addNewEmployee();
+}
 
-// init();
+init();
 
 
 
