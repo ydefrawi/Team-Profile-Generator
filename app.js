@@ -16,26 +16,31 @@ const employees = [];
 
 //Inquirer Questions 
 
-const newEmpQuestions = [
+
+
+const newEmpQuestion = [
+
     [
         {
             type: 'list',
-            message: 'Add a new employee?',
+            message: 'Add new employee?',
             name: 'newMember',
             choices: ['Yes', 'No',]
         },
     ]
-];
+
+]
+
 
 const roleQuestion = [
-
+    
     {
         type: 'list',
         message: 'Employee role?',
         name: 'role',
         choices: ['Engineer', 'Manager', 'Intern']
     },
-
+    
 ]
 
 const internQuestions = [
@@ -65,7 +70,7 @@ const internQuestions = [
 const engineerQuestions = [
     {
         type: 'input',
-        message: 'Name:',
+        message: 'Name?:',
         name: 'name',
     },
     {
@@ -89,7 +94,7 @@ const managerQuestions = [
     {
         type: 'input',
         message: 'Name?',
-        name: 'github',
+        name: 'name',
     },
     {
         type: 'input',
@@ -109,32 +114,56 @@ const managerQuestions = [
 ]
 
 
-
-
-
-const addNewEmp = () => {
+addNewEmp = () => {
     inquirer
-        .prompt(newEmpQuestions)
+        .prompt(newEmpQuestion)
         .then(({ newMember }) => {
             switch (newMember) {
                 case 'Yes':
-                    init()
+                    employeeRole()
                     break;
                 case 'No':
+                    console.log('NO')
                     break;
             }
         })
 }
+
+const employeeRole = () => {
+    inquirer
+        .prompt(roleQuestion)
+        .then(({ role }) => {
+            switch (role) {
+                case 'Intern':
+                    return addIntern()
+                    break;
+                case 'Engineer':
+                    return addEngineer()
+                    break;
+                case 'Manager':
+                    return addManager()
+                    break;
+            }
+        })
+}
+
+
+
+// .then(() => {
+//     addNew();
+// // })
+
 
 const addManager = () => {
     console.log("Manager selected!")
     inquirer
         .prompt(managerQuestions)
         .then(({ name, id, email, office }) => {
-             // TODO will write to templates here 
+            // TODO will write to templates here 
             console.log(`Name: ${name} \nID: ${id}\nEmail: ${email} \nOffice Number: ${office}`);
             const manager = new Manager()
             employees.push(manager)
+            addNewEmp();
         })
 }
 
@@ -147,6 +176,7 @@ const addEngineer = () => {
             console.log(`Name: ${name} \nID: ${id}\nEmail: ${email} \nGitHub: ${github}`);
             const engineer = new Engineer()
             employees.push(engineer)
+            addNewEmp();
         })
 }
 
@@ -160,59 +190,22 @@ const addIntern = () => {
             const intern = new Intern(name, id, email, school)
             employees.push(intern)
             console.log(intern);
+            addNewEmp(name, id);
+
+            
         })
 }
 
 
 
 
-function init() {
-    inquirer
-        .prompt(roleQuestion)
-        .then(({ role }) => {
-            switch (role) {
-                case 'Intern':
-                    addIntern()
-                    break;
-                case 'Engineer':
-                    addEngineer()
-                    break;
-                case 'Manager':
-                    addManager()
-                    break;
-            }
-        })
-        // .then(() => {
-        //     addNew();
-        // })
-
+const init = () => {
+    addNewEmp();
 }
 
-
-// function init() {
-//     inquirer
-//         .prompt(roleQuestion)
-//         .then(({ role }) => {
-//             switch (role) {
-//                 case 'Intern':
-//                     addIntern()
-//                     break;
-//                 case 'Engineer':
-//                     addEngineer()
-//                     break;
-//                 case 'Manager':
-//                     addManager()
-//                     break;
-//             }
-//         })
-//         // .then(() => {
-//         //     addNew();
-//         // })
-
-// }
+init();
 
 
-addNew();
 
 
 // Write code to use inquirer to gather information about the development team members,
