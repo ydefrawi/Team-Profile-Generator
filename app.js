@@ -119,7 +119,7 @@ const addNewEmp = () => {
                     employeeRole()
                     break;
                 case 'No':
-                    console.log(employees)
+                    // console.log(employees)
                     break;
             }
         })
@@ -130,14 +130,14 @@ const employeeRole = () => {
         .prompt(roleQuestion)
         .then(({ role }) => {
             switch (role) {
-                case 'Intern':
-                    return addIntern()
+                case 'Manager':
+                    return addManager()
                     break;
                 case 'Engineer':
                     return addEngineer()
                     break;
-                case 'Manager':
-                    return addManager()
+                case 'Intern':
+                    return addIntern()
                     break;
             }
         })
@@ -145,12 +145,12 @@ const employeeRole = () => {
 
 
 const addManager = () => {
-    console.log("Manager selected!")
+    console.log(`\nManager selected!`)
     inquirer
         .prompt(managerQuestions)
         .then(({ name, id, email, office }) => {
             // TODO will write to templates here 
-            console.log(`Name: ${name} \nID: ${id}\nEmail: ${email} \nOffice Number: ${office}`);
+            console.log(`\nManager Added!\nName: ${name} \nID: ${id}\nEmail: ${email} \nOffice Number: ${office}\n`);
             const manager = new Manager(name, id, email, office)
             employees.push(manager)
             addNewEmp();
@@ -158,12 +158,12 @@ const addManager = () => {
 }
 
 const addEngineer = () => {
-    console.log("Engineer selected!")
+    console.log(`\nEngineer selected!`)
     inquirer
         .prompt(engineerQuestions)
         .then(({name, id, email, github }) => {
              // TODO will write to templates here 
-            console.log(`Name: ${name} \nID: ${id}\nEmail: ${email} \nGitHub: ${github}`);
+            console.log(`\nEngineer Added!\nName: ${name} \nID: ${id}\nEmail: ${email} \nGitHub: ${github}\n`);
             const engineer = new Engineer(name, id, email, github)
             employees.push(engineer)
             addNewEmp();
@@ -171,12 +171,12 @@ const addEngineer = () => {
 }
 
 const addIntern = () => {
-    console.log("Intern selected!")
+    console.log(`\nIntern selected!`)
     inquirer
         .prompt(internQuestions)
         .then(({ name, id, email, school }) => {
         // TODO will write to templates here 
-            console.log(`Name: ${name} \nSchool: ${school}`);
+            console.log(`\nIntern Added!\nName: ${name} \nSchool: ${school}\n`);
             const intern = new Intern(name, id, email, school)
             employees.push(intern)
             console.log(intern);
