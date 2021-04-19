@@ -34,7 +34,7 @@ const roleQuestion = [
         type: 'list',
         message: 'Employee role?',
         name: 'role',
-        choices: ['Engineer', 'Manager', 'Intern']
+        choices: ['Manager','Engineer','Intern']
     },
     
 ]
@@ -105,7 +105,7 @@ const managerQuestions = [
     {
         type: 'input',
         message: 'Office Number?',
-        name: 'office',
+        name: 'officeNumber',
     }
 ]
 
@@ -152,10 +152,9 @@ const addManager = () => {
     console.log(`\nManager selected!`)
     inquirer
         .prompt(managerQuestions)
-        .then(({ name, id, email, office }) => {
-            // TODO will write to templates here 
-            console.log(`\nManager Added!\nName: ${name} \nID: ${id}\nEmail: ${email} \nOffice Number: ${office}\n`);
-            const manager = new Manager(name, id, email, office)
+        .then(({ name, id, email, officeNumber }) => {
+            console.log(`\nManager Added!\nName: ${name} \nID: ${id}\nEmail: ${email} \nOffice Number: ${officeNumber}\n`);
+            const manager = new Manager(name, id, email, officeNumber)
             employees.push(manager)
             addNewEmployee();
         })
@@ -167,7 +166,6 @@ const addEngineer = () => {
     inquirer
         .prompt(engineerQuestions)
         .then(({name, id, email, github }) => {
-             // TODO will write to templates here 
             console.log(`\nEngineer Added!\nName: ${name} \nID: ${id}\nEmail: ${email} \nGitHub: ${github}\n`);
             const engineer = new Engineer(name, id, email, github)
             employees.push(engineer)
@@ -180,7 +178,6 @@ const addIntern = () => {
     inquirer
         .prompt(internQuestions)
         .then(({ name, id, email, school }) => {
-        // TODO will write to templates here 
             console.log(`\nIntern Added!\nName: ${name} \nSchool: ${school}\n`);
             const intern = new Intern(name, id, email, school)
             employees.push(intern)
