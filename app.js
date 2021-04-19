@@ -18,17 +18,13 @@ const employees = [];
 
 
 
-const newEmpQuestion = [
-
-    [
-        {
-            type: 'list',
-            message: 'Add new employee?',
-            name: 'newMember',
-            choices: ['Yes', 'No',]
-        },
-    ]
-
+const wantNewEmp = [
+    {
+        type: 'list',
+        message: 'Add new employee?',
+        name: 'newMember',
+        choices: ['Yes', 'No',]
+    },
 ]
 
 
@@ -45,22 +41,22 @@ const roleQuestion = [
 
 const internQuestions = [
     {
-        type: 'input',
-        message: 'Name?:',
+        Type: 'input',
+        Message: 'Name?:',
         name: 'name',
     },
     {
-        type: 'input',
-        message: 'ID?:',
+        Type: 'input',
+        Message: 'ID?:',
         name: 'id',
     },
     {
-        type: 'input',
+        Type: 'input',
         message: 'Email?:',
         name: 'email',
     },
     {
-        type: 'input',
+        Type: 'input',
         message: 'School?:',
         name: 'school',
     },
@@ -87,7 +83,7 @@ const engineerQuestions = [
         type: 'input',
         message: 'GitHub Username?:',
         name: 'github',
-    },
+    }
 ]
 
 const managerQuestions = [
@@ -110,20 +106,20 @@ const managerQuestions = [
         type: 'input',
         message: 'Office Number?',
         name: 'office',
-    },
+    }
 ]
 
 
-addNewEmp = () => {
+const addNewEmp = () => {
     inquirer
-        .prompt(newEmpQuestion)
+        .prompt(wantNewEmp)
         .then(({ newMember }) => {
             switch (newMember) {
                 case 'Yes':
                     employeeRole()
                     break;
                 case 'No':
-                    console.log('NO')
+                    console.log(employees)
                     break;
             }
         })
@@ -148,12 +144,6 @@ const employeeRole = () => {
 }
 
 
-
-// .then(() => {
-//     addNew();
-// // })
-
-
 const addManager = () => {
     console.log("Manager selected!")
     inquirer
@@ -161,7 +151,7 @@ const addManager = () => {
         .then(({ name, id, email, office }) => {
             // TODO will write to templates here 
             console.log(`Name: ${name} \nID: ${id}\nEmail: ${email} \nOffice Number: ${office}`);
-            const manager = new Manager()
+            const manager = new Manager(name, id, email, office)
             employees.push(manager)
             addNewEmp();
         })
@@ -174,7 +164,7 @@ const addEngineer = () => {
         .then(({name, id, email, github }) => {
              // TODO will write to templates here 
             console.log(`Name: ${name} \nID: ${id}\nEmail: ${email} \nGitHub: ${github}`);
-            const engineer = new Engineer()
+            const engineer = new Engineer(name, id, email, github)
             employees.push(engineer)
             addNewEmp();
         })
@@ -199,11 +189,11 @@ const addIntern = () => {
 
 
 
-const init = () => {
+// const init = () => {
     addNewEmp();
-}
+// }
 
-init();
+// init();
 
 
 
