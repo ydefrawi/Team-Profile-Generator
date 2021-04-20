@@ -153,8 +153,9 @@ const addManager = () => {
     inquirer
         .prompt(managerQuestions)
         .then(({ name, id, email, officeNumber }) => {
+            const mailTo=`<a href="mailto:${email}">${email}</a>`
             console.log(`\nManager Added!\nName: ${name} \nID: ${id}\nEmail: ${email} \nOffice Number: ${officeNumber}\n`);
-            const manager = new Manager(name, id, email, officeNumber)
+            const manager = new Manager(name, id, mailTo, officeNumber)
             employees.push(manager)
             addNewEmployee();
         })
@@ -166,8 +167,10 @@ const addEngineer = () => {
     inquirer
         .prompt(engineerQuestions)
         .then(({name, id, email, github }) => {
+            const mailTo=`<a href="mailto:${email}">${email}</a>`
+            gitUrl = `<a href="https://github.com/${github}">${github}</a>`;
             console.log(`\nEngineer Added!\nName: ${name} \nID: ${id}\nEmail: ${email} \nGitHub: ${github}\n`);
-            const engineer = new Engineer(name, id, email, github)
+            const engineer = new Engineer(name, id, mailTo, gitUrl)
             employees.push(engineer)
             addNewEmployee();
         })
@@ -178,8 +181,9 @@ const addIntern = () => {
     inquirer
         .prompt(internQuestions)
         .then(({ name, id, email, school }) => {
+            const mailTo=`<a href="mailto:${email}">${email}</a>`
             console.log(`\nIntern Added!\nName: ${name} \nSchool: ${school}\n`);
-            const intern = new Intern(name, id, email, school)
+            const intern = new Intern(name, id, mailTo, school)
             employees.push(intern)
             addNewEmployee();
 
