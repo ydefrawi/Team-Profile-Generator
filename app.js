@@ -17,7 +17,7 @@ const employees = [];
 //Inquirer Questions 
 
 
-
+//Questions that fire off at initialization and after employee object is instantiated
 const wantNewEmp = [
     {
         type: 'list',
@@ -27,7 +27,7 @@ const wantNewEmp = [
     },
 ]
 
-
+//Role question (What subclass of Employee to create)
 const roleQuestion = [
     
     {
@@ -39,6 +39,7 @@ const roleQuestion = [
     
 ]
 
+//Intern Questions
 const internQuestions = [
     {
         Type: 'input',
@@ -62,7 +63,7 @@ const internQuestions = [
     },
 ]
 
-
+//Engineer Questions
 const engineerQuestions = [
     {
         type: 'input',
@@ -86,6 +87,7 @@ const engineerQuestions = [
     }
 ]
 
+//Manager Questions
 const managerQuestions = [
     {
         type: 'input',
@@ -109,7 +111,9 @@ const managerQuestions = [
     }
 ]
 
-//Asks user if they wish to add an employee
+//Asks user if they wish to add an employee. 
+//If no, page is rendered.
+//If yes, calls employeeRole() 
 const addNewEmployee = () => {
     inquirer
         .prompt(wantNewEmp)
@@ -126,7 +130,9 @@ const addNewEmployee = () => {
         })
 }
 
-//Asks user what type of employee they wish to add (Manager, Engineer, Intern)
+//Asks user what type of employee they wish to add 
+//(Manager, Engineer, Intern)
+
 const employeeRole = () => {
     inquirer
         .prompt(roleQuestion)
@@ -146,8 +152,9 @@ const employeeRole = () => {
 }
 
 
-// The 3 functions below (addManager, etc) prompt role-specific questions ,
-//write to the template, and call the addNewEmp function again. 
+// The 3 functions below (addManager, addEngineer, etc) prompt role-specific questions ,
+//push the object to the employees array, and call the addNewEmployee() function again. 
+
 const addManager = () => {
     console.log(`\nManager selected!`)
     inquirer
@@ -192,36 +199,8 @@ const addIntern = () => {
 }
 
 
-
-
 const init = () => {
     addNewEmployee();
 }
 
 init();
-
-
-
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
