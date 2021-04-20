@@ -119,7 +119,7 @@ const addNewEmployee = () => {
                     employeeRole()
                     break;
                 case 'No':
-                    fs.writeFile('test.html', render(employees), (err) => {
+                    fs.writeFile(outputPath, render(employees), (err) => {
                         err ? console.error(err) : console.log('Success!')})
                     break;
             }

@@ -1,11 +1,13 @@
-<div class="card text-white bg-primary bg-gradient mb-3" style="max-width: 18rem;">
-    <div class="card-header">{{ role }}</div>
-    <div class="card-body">
-        <h5 class="card-title">{{ name }}</h5>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item text-dark bg-light bg-gradient">ID: {{ id }}</li>
-            <li class="list-group-item text-dark bg-light bg-gradient">Email: {{ email }}</li>
-            <li class="list-group-item text-dark bg-light bg-gradient">Github: {{ github }}</li>
-        </ul>
+<div class="col-sm">
+    <div class="card text-white bg-primary bg-gradient mb-3" style="max-width: 18rem;">
+        <div class="card-header">{{ role }}</div>
+        <div class="card-body">
+            <h5 class="card-title">{{ name }}</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item text-dark bg-light bg-gradient">ID: {{ id }}</li>
+                <li class="list-group-item text-dark bg-light bg-gradient">Email:<br> {{ email }}</li>
+                <li class="list-group-item text-dark bg-light bg-gradient">Github: {{ github }}</li>
+            </ul>
+        </div>
     </div>
 </div>
