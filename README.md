@@ -12,6 +12,17 @@ I WANT to generate a webpage that displays my team's basic info
 SO THAT I have quick access to their emails and GitHub profiles
 ```
 
+## Dependencies
+    Inquirer: ^6.3.1
+    jest: ^24.8.0"
+
+## Installation
+    run "npm i" to install required node modules
+
+
+## Usage
+    enter "node app.js" to begin prompt. Create as many team members as you wish, then select "No" after "Add new employee?" when all employees have been entered. 
+
 [GitHub Repo](https://github.com/ydefrawi/Team-Profile-Generator)
 
 [Walkthrough Video](https://drive.google.com/file/d/1o3biRWw8wpd4wUKRPGAE7GwLtYYLQHLI/view?usp=sharing)
@@ -19,7 +30,5 @@ SO THAT I have quick access to their emails and GitHub profiles
 ## Screenshots
 
 ![Team Profile](images\TeamProfile1.PNG?raw=true "Profile Page")
-
-![Team Profile](images\TeamProfileCard.PNG?raw=true "Profile Card")
 
 ![Team Profile](images\terminal.PNG?raw=true "Terminal")

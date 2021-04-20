@@ -23,7 +23,7 @@ const wantNewEmp = [
         type: 'list',
         message: 'Add new employee?',
         name: 'newMember',
-        choices: ['Yes', 'No',]
+        choices: ['Add', 'Done!',]
     },
 ]
 
@@ -115,10 +115,10 @@ const addNewEmployee = () => {
         .prompt(wantNewEmp)
         .then(({ newMember }) => {
             switch (newMember) {
-                case 'Yes':
+                case 'Add':
                     employeeRole()
                     break;
-                case 'No':
+                case 'Done!':
                     fs.writeFile(outputPath, render(employees), (err) => {
                         err ? console.error(err) : console.log('Success!')})
                     break;
