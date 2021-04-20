@@ -20,6 +20,5 @@ SO THAT I have quick access to their emails and GitHub profiles
 
 ![Team Profile](https://github.com/ydefrawi/Team-Profile-Generator/blob/main/images/TeamProfile1.PNG?raw=true "Profile Page")
 
-![Team Profile](images\TeamProfileCard.PNG?raw=true "Profile Card")
 
-![Team Profile](images\terminal.PNG?raw=true "Terminal")
+![Team Profile](https://github.com/ydefrawi/Team-Profile-Generator/blob/main/images/terminal.PNG?raw=true "Terminal")
