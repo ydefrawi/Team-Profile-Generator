@@ -15,3 +15,11 @@ SO THAT I have quick access to their emails and GitHub profiles
 [GitHub Repo](https://github.com/ydefrawi/Team-Profile-Generator)
 
 [Walkthrough Video](https://drive.google.com/file/d/1o3biRWw8wpd4wUKRPGAE7GwLtYYLQHLI/view?usp=sharing)
+
+## Screenshots
+
+![Team Profile](images\TeamProfile1.PNG?raw=true "Profile Page")
+
+![Team Profile](images\TeamProfileCard.PNG?raw=true "Profile Card")
+
+![Team Profile](images\terminal.PNG?raw=true "Terminal")
