@@ -25,7 +25,7 @@ SO THAT I have quick access to their emails and GitHub profiles
 
 [GitHub Repo](https://github.com/ydefrawi/Team-Profile-Generator)
 
-[Walkthrough Video](https://drive.google.com/file/d/1o3biRWw8wpd4wUKRPGAE7GwLtYYLQHLI/view?usp=sharing)
+[Walkthrough Video](https://drive.google.com/file/d/1MeHBbYBfEuViQw5_zz2DyCPj9cJBf_Lf/view?usp=sharing)
 
 ## Screenshots
 
